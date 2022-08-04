@@ -6,6 +6,7 @@ export default class ApproveOrRejectTimecardsContainer extends LightningElement 
     @api recordId;
 
     timecards;
+    modalShown = false;
 
     connectedCallback() {
         getRelatedTimecards( { projectId: this.recordId } )
@@ -28,5 +29,9 @@ export default class ApproveOrRejectTimecardsContainer extends LightningElement 
         .catch(error => {
             console.warn(error);
         });
+    }
+
+    toggleModal() {
+        this.modalShown = !this.modalShown;
     }
 }

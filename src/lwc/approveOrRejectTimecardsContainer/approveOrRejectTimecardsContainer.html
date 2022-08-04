@@ -1,4 +1,24 @@
 <template>
-    <c-approve-or-reject-timecards-table timecards={timecards}></c-approve-or-reject-timecards-table>
+    <lightning-button label="Approve or Reject Timecards" onclick={toggleModal}></lightning-button>
+    <template if:true={modalShown}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__close">
+                    <lightning-icon icon-name="utility:close" 
+                                    alternative-text="Close" 
+                                    variant="inverse"
+                                    onclick={toggleModal}></lightning-icon>
+                </div>
+                <div class="slds-modal__header"></div>
+                <div class="slds-modal__content">
+                    <c-approve-or-reject-timecards-table timecards={timecards}></c-approve-or-reject-timecards-table>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={toggleModal}></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
     <lightning-button label="Create new timecard" onclick={createTimecard}></lightning-button>
 </template>
