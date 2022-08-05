@@ -1,24 +1,14 @@
 <template>
-    <lightning-button label="Approve or Reject Timecards" onclick={toggleModal}></lightning-button>
-    <template if:true={modalShown}>
-        <section class="slds-modal slds-fade-in-open">
-            <div class="slds-modal__container">
-                <div class="slds-modal__close">
-                    <lightning-icon icon-name="utility:close" 
-                                    alternative-text="Close" 
-                                    variant="inverse"
-                                    onclick={toggleModal}></lightning-icon>
-                </div>
-                <div class="slds-modal__header"></div>
-                <div class="slds-modal__content">
-                    <c-approve-or-reject-timecards-table timecards={timecards}></c-approve-or-reject-timecards-table>
-                </div>
-                <div class="slds-modal__footer">
-                    <lightning-button label="Cancel" onclick={toggleModal}></lightning-button>
-                </div>
-            </div>
-        </section>
-        <div class="slds-backdrop slds-backdrop_open"></div>
-    </template>
-    <lightning-button label="Create new timecard" onclick={createTimecard}></lightning-button>
+    <c-modal label="Approve or Reject Timecards">
+        <c-approve-or-reject-timecards-table timecards={timecards}></c-approve-or-reject-timecards-table>
+    </c-modal>
+    <c-modal label="Create new timecard">
+        <lightning-record-edit-form object-api-name="Timecard__c"
+                                    onsuccess={handleSuccess}
+        >
+            <lightning-input-field field-name="Status__c"></lightning-input-field>
+            <lightning-input-field field-name="Project__c"></lightning-input-field>
+            <lightning-button label="Save" type="submit" variant="brand"></lightning-button>
+        </lightning-record-edit-form>
+    </c-modal>
 </template>

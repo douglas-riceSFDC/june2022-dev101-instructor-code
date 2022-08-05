@@ -1,30 +1,11 @@
 <template>
     <lightning-card>
         <div class="slds-p-left_small">
-            <table class="slds-table slds-table_bordered slds-table_striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Times Rejected</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <template for:each={timecards} for:item="timecard">
-                        <tr key={timecard.Id}>
-                            <td>
-                                {timecard.Name}
-                            </td>
-                            <td>
-                                {timecard.Status__c}
-                            </td>
-                            <td>
-                                {timecard.Number_of_Times_Rejected__c}
-                            </td>
-                        </tr>
-                    </template>
-                </tbody>
-            </table>
+            <lightning-datatable columns={columns} 
+                                 key-field="Id"
+                                 onrowselection={handleRowSelection}
+                                 data={timecards}>
+            </lightning-datatable>
         </div>
     </lightning-card>    
 </template>
