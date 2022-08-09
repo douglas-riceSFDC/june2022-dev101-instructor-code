@@ -1,8 +1,10 @@
 <template>
-    <c-modal label="Approve or Reject Timecards">
-        <c-approve-or-reject-timecards-table timecards={timecards}></c-approve-or-reject-timecards-table>
+    <c-modal label="Approve or Reject Timecards" modal-shown-override={modalShown}>
+        <c-approve-or-reject-timecards-table timecards={timecards}
+                                             onrejecttimecards={handleRejectTimecards}
+        ></c-approve-or-reject-timecards-table>
     </c-modal>
-    <c-modal label="Create new timecard">
+    <c-modal label="Create new timecard" modal-shown-override={modalShown}>
         <lightning-record-edit-form object-api-name="Timecard__c"
                                     onsuccess={handleSuccess}
         >

@@ -24,4 +24,17 @@ public with sharing class TimecardApprovalController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static void rejectTimecards(List<Timecard__c> timecards) {
+        try {
+            for(Timecard__c timecard : timecards) {
+                timecard.Status__c = 'Rejected';
+            }
+
+            update timecards;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }

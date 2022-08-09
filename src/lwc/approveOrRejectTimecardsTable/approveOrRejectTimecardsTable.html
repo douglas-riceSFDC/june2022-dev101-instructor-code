@@ -6,6 +6,20 @@
                                  onrowselection={handleRowSelection}
                                  data={timecards}>
             </lightning-datatable>
+
+            <div class="slds-p-around_small">
+                <lightning-button label="Reject" 
+                                variant="destructive"
+                                disabled={isButtonDisabled}
+                                onclick={rejectSelectedTimecards}>
+                </lightning-button>
+                <lightning-button label="Approve" 
+                                class="slds-p-left_small"
+                                variant="success"
+                                disabled={isButtonDisabled}
+                                onclick={approveSelectedTimecards}>
+                </lightning-button>
+            </div>
         </div>
     </lightning-card>    
 </template>
