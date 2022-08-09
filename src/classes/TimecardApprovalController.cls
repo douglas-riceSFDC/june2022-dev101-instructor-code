@@ -1,6 +1,6 @@
 public with sharing class TimecardApprovalController {
 
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<Timecard__c> getRelatedTimecards(Id projectId) {
         try {
             return [
