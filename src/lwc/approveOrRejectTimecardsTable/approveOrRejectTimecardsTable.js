@@ -36,8 +36,15 @@ export default class ApproveOrRejectTimecardsTable extends LightningElement {
     }
 
     approveSelectedTimecards() {
+        console.log('firing event');
         let eventPayload = {
             timecards: this.selectedTimecards
         };
+
+        const approveTimecardsEvent = new CustomEvent('approvetimecards', {
+            detail: eventPayload
+        });
+        
+        this.dispatchEvent(approveTimecardsEvent);
     }
 }

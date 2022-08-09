@@ -2,6 +2,7 @@ import { LightningElement, api } from 'lwc';
 import getRelatedTimecards from '@salesforce/apex/TimecardApprovalController.getRelatedTimecards';
 import createNewTimecard from '@salesforce/apex/TimecardApprovalController.createNewTimecard';
 import rejectTimecards from '@salesforce/apex/TimecardApprovalController.rejectTimecards';
+import approveTimecards from '@salesforce/apex/TimecardApprovalController.approveTimecards';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class ApproveOrRejectTimecardsContainer extends LightningElement {
@@ -60,6 +61,19 @@ export default class ApproveOrRejectTimecardsContainer extends LightningElement 
             })
             .catch(error => {
                 console.warn(error);
+            });
+    }
+
+    handleApproveTimecards(event) {
+        console.log('handling event');
+        let selectedTimecards = event.detail.timecards;
+
+        approveTimecards( { timecards: selectedTimecards })
+            .then(response => {
+                console.log('timecards approved successfully');
+            })
+            .catch(error => {
+                console.error(error);
             });
     }
 }

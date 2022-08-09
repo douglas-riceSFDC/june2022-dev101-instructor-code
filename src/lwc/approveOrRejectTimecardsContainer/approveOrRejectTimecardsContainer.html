@@ -2,6 +2,7 @@
     <c-modal label="Approve or Reject Timecards" modal-shown-override={modalShown}>
         <c-approve-or-reject-timecards-table timecards={timecards}
                                              onrejecttimecards={handleRejectTimecards}
+                                             onapprovetimecards={handleApproveTimecards}
         ></c-approve-or-reject-timecards-table>
     </c-modal>
     <c-modal label="Create new timecard" modal-shown-override={modalShown}>
