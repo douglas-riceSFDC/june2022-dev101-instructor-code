@@ -45,4 +45,8 @@ public with sharing class TimecardStatusManager {
         
         update relatedTasks;
     }
+
+    public static void printToDebug(String debugStatement) {
+        System.debug(debugStatement);
+    }
 }
